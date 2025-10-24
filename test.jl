@@ -51,7 +51,7 @@ const SPRAND_DENSITY = 1.5e-4    # density for sprand (approx nnz ≈ density*N^
 # Rosenbrock function is a standard test problem in optimization.
 function rosenbrock(x::Vector)
     n = length(x)
-    return sum(100 * (x[i+1] - x[i]^2)^2 + (1 - x[i])^2 for i in 1:n-1)
+    return sum(1000 * (x[i+1] - x[i]^2)^2 + (1 - x[i])^2 for i in 1:n-1)
 end
 
 # Lorenz dynamical system definition (classic nonlinear ODE system).
@@ -135,7 +135,7 @@ function run_benchmarks()
         BenchmarkTools.DEFAULT_PARAMETERS.samples = N_SAMPLES
         b = @benchmark ($benchmark_func)()
         t = mean(b).time / 1e6 # convert ns to ms
-        @printf("%-55s %15.4f ms\n", name, t)
+        @printf("%-55s %5.4f ms\n", name, t)
     end
 
     # --- Core language & dense linear algebra benchmarks ---
@@ -149,11 +149,11 @@ function run_benchmarks()
     run_and_print("LinearAlgebra (Dense): LU", () -> lu(mat_a))
     run_and_print("LinearAlgebra (Dense): QR", () -> qr(mat_a))
     run_and_print("FFTW: FFT", () -> fft(signal_data))
-    run_and_print("QuadGK: Numerical Integration (quadgk)", () -> quadgk(x -> exp(sqrt(x)) * sin(x), 0, 5000))
-    run_and_print("Optim: Function Optimization (BFGS)", () -> optimize(rosenbrock, [1.3, 0.7, 0.8, 1.9, 1.2], BFGS()))
+    run_and_print("QuadGK: Numerical Integration (quadgk)", () -> quadgk(x -> exp(-sqrt(x)) * sin(x^2), 0, 5000))
+    run_and_print("Optim: Function Optimization (BFGS)", () -> optimize(rosenbrock, randn(100), BFGS()))
     run_and_print("DSP: Signal Filtering (filt)", () -> filt(filter_b, filter_a, signal_data))
     run_and_print("Interpolations: Cubic Interpolation", () -> CubicSplineInterpolation(interp_x, interp_y).(interp_points))
-    run_and_print("DifferentialEquations: Lorenz System (Tsit5/RK45)", () -> DifferentialEquations.solve(lorenz_prob, Tsit5()))å
+    run_and_print("DifferentialEquations: Lorenz System (Tsit5/RK45)", () -> DifferentialEquations.solve(lorenz_prob, Tsit5()))
     run_and_print("Statistics: Linear Regression (OLS, \\)", () -> X_reg \ y_reg)
 
     # --- Sparse linear algebra benchmarks ---
