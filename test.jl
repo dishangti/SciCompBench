@@ -15,7 +15,7 @@ using Random
 using DifferentialEquations # for ODE solving
 using IterativeSolvers      # for Krylov/iterative sparse solvers
 
-# using MLKernels  # Uncomment if you want to include MLKernels benchmarks
+# using MKL  # Uncomment if you want to include MKL backend for Intel CPU
 # Use AppleAccelerate on Apple Silicon if available (guarded import)
 if Sys.isapple()
     try
