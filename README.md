@@ -1,6 +1,8 @@
 # SciCompBench
 A simple benchmark for scientific computing.
 
+It is recommended to have 4GB memory to run the default test.
+
 ## Benchmark Results
 ### Macbook Pro 14-inch with M4Pro 12C
 Julia v1.11.7 with 48G RAM on macOS 15.7.1 using AppleAccelerate:
@@ -25,6 +27,32 @@ Sparse (SPD Laplacian): SpMV (A*x)                      0.6197 ms
 Sparse (SPD Laplacian): Direct Solve (\)                20.7969 ms
 Sparse (SPD Laplacian): Cholesky Factorization          19.0360 ms
 Sparse (sprand): SpMV (A*x)                             5.6554 ms
+```
+
+
+### Intel Xeon Platinum 8576C 16C
+Julia v1.12.1 with 32G RAM on Debian 12.11 using MKL 8 threads
+```
+Core: Elementwise Add                                   41.7953 ms
+Core: Elementwise Mul                                   41.2345 ms
+Core: Array Sorting (sort)                              680.0826 ms
+LinearAlgebra (Dense): Matrix Mul (*)                   27.5046 ms
+LinearAlgebra (Dense): Matrix Inv                       58.8111 ms
+LinearAlgebra (Dense): Linear Solve (\)                 19.9940 ms
+LinearAlgebra (Dense): SVD                              514.8808 ms
+LinearAlgebra (Dense): LU                               20.8752 ms
+LinearAlgebra (Dense): QR                               49.5905 ms
+FFTW: FFT                                               572.8175 ms
+QuadGK: Numerical Integration (quadgk)                  15.5159 ms
+Optim: Function Optimization (BFGS)                     74.2283 ms
+DSP: Signal Filtering (filt)                            439.2561 ms
+Interpolations: Cubic Interpolation                     15.8363 ms
+DifferentialEquations: Lorenz System (Tsit5/RK45)       107.2755 ms
+Statistics: Linear Regression (OLS, \)                  58.3702 ms
+Sparse (SPD Laplacian): SpMV (A*x)                      0.7712 ms
+Sparse (SPD Laplacian): Direct Solve (\)                45.7228 ms
+Sparse (SPD Laplacian): Cholesky Factorization          41.1871 ms
+Sparse (sprand): SpMV (A*x)                             11.0877 ms
 ```
 
 ### Intel Xeon Gold 6248 80C
