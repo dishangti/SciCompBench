@@ -119,7 +119,7 @@ def run_benchmarks():
 
     # ODE (Lorenz) setup
     lorenz_u0 = [0.0, 1.0, 1.05]
-    lorenz_tspan = (-5000.0, 5000.0) # Note: Julia version was (-5000, 5000)
+    lorenz_tspan = (-1000.0, 1000.0) # Note: Julia version was (-5000, 5000)
     lorenz_p = (10.0, 28.0, 8/3) # sigma, rho, beta (passed as args)
 
     # Linear regression synthetic data: y = 3.5x + 2.0 + ε
@@ -150,16 +150,6 @@ def run_benchmarks():
         
         print(f"{name:<55} {t_avg_ms:5.4f} ms")
 
-    # --- Wrapper function for integration benchmark ---
-    def quad_benchmark_wrapper():
-        """
-        Wrapper for the quad benchmark.
-        The integrand is highly oscillatory.
-        We increase the subdivision limit (default 50) instead of suppressing the warning.
-        """
-        # Increase the subdivision limit from 50 to 200
-        integrate.quad(lambda x: np.exp(-np.sqrt(x)) * np.sin(x**2), 0, 5000, limit=50000)
-
     # --- Core language & dense linear algebra benchmarks ---
     run_and_print("NumPy: Elementwise Add", lambda: vec_a + vec_b)
     run_and_print("NumPy: Elementwise Mul", lambda: vec_a * vec_b)
@@ -172,7 +162,7 @@ def run_benchmarks():
     run_and_print("SciPy (Linalg): QR", lambda: la.qr(mat_a))
     run_and_print("SciPy (FFT): FFT", lambda: fft.fft(signal_data))
     run_and_print("SciPy (Integrate): Numerical Integration (quad)", 
-                  quad_benchmark_wrapper) # Use the wrapper function
+                  lambda: integrate.quad(lambda x: np.exp(-np.sqrt(x)) * np.sin(x**2), 0, 5000, limit=50000))
     run_and_print("SciPy (Optimize): Function Optimization (BFGS)", 
                   lambda: optimize.minimize(rosenbrock, optim_guess, method='BFGS'))
     run_and_print("SciPy (Signal): Signal Filtering (lfilter)", 
