@@ -104,3 +104,28 @@ Sparse (SPD Laplacian): Direct Solve (\)                35.8809 ms
 Sparse (SPD Laplacian): Cholesky Factorization          31.2228 ms
 Sparse (sprand): SpMV (A*x)                             9.5694 ms
 ```
+
+### Intel Core i9-13900H
+Julia v1.12.5 with 32G RAM on Manjaro Linux using MKL 20 threads
+```
+Core: Elementwise Add                                   26.2306 ms
+Core: Elementwise Mul                                   25.6044 ms
+Core: Array Sorting (sort)                              446.5720 ms
+LinearAlgebra (Dense): Matrix Mul (*)                   67.1801 ms
+LinearAlgebra (Dense): Matrix Inv                       142.9333 ms
+LinearAlgebra (Dense): Linear Solve (\)                 37.1977 ms
+LinearAlgebra (Dense): SVD                              808.0456 ms
+LinearAlgebra (Dense): LU                               32.3165 ms
+LinearAlgebra (Dense): QR                               116.5737 ms
+FFTW: FFT                                               435.1278 ms
+QuadGK: Numerical Integration (quadgk)                  12.3177 ms
+Optim: Function Optimization (BFGS)                     85.6275 ms
+DSP: Signal Filtering (filt)                            437.2011 ms
+Interpolations: Cubic Interpolation                     13.2032 ms
+DifferentialEquations: Lorenz System (Tsit5/RK45)       86.0311 ms
+Statistics: Linear Regression (OLS, \)                  44.8312 ms
+Sparse (SPD Laplacian): SpMV (A*x)                      0.6227 ms
+Sparse (SPD Laplacian): Direct Solve (\)                34.2037 ms
+Sparse (SPD Laplacian): Cholesky Factorization          29.5711 ms
+Sparse (sprand): SpMV (A*x)                             10.5607 ms
+```
