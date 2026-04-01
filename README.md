@@ -106,26 +106,26 @@ Sparse (sprand): SpMV (A*x)                             9.5694 ms
 ```
 
 ### Intel Core i9-13900H
-Julia v1.12.5 with 32G RAM on Manjaro Linux using MKL 20 threads
+Julia v1.12.5 with 32G RAM on Manjaro Linux using MKL 6 threads on P-cores
 ```
-Core: Elementwise Add                                   26.2306 ms
-Core: Elementwise Mul                                   25.6044 ms
-Core: Array Sorting (sort)                              446.5720 ms
-LinearAlgebra (Dense): Matrix Mul (*)                   67.1801 ms
-LinearAlgebra (Dense): Matrix Inv                       142.9333 ms
-LinearAlgebra (Dense): Linear Solve (\)                 37.1977 ms
-LinearAlgebra (Dense): SVD                              808.0456 ms
-LinearAlgebra (Dense): LU                               32.3165 ms
-LinearAlgebra (Dense): QR                               116.5737 ms
-FFTW: FFT                                               435.1278 ms
-QuadGK: Numerical Integration (quadgk)                  12.3177 ms
-Optim: Function Optimization (BFGS)                     85.6275 ms
-DSP: Signal Filtering (filt)                            437.2011 ms
-Interpolations: Cubic Interpolation                     13.2032 ms
-DifferentialEquations: Lorenz System (Tsit5/RK45)       86.0311 ms
-Statistics: Linear Regression (OLS, \)                  44.8312 ms
-Sparse (SPD Laplacian): SpMV (A*x)                      0.6227 ms
-Sparse (SPD Laplacian): Direct Solve (\)                34.2037 ms
-Sparse (SPD Laplacian): Cholesky Factorization          29.5711 ms
-Sparse (sprand): SpMV (A*x)                             10.5607 ms
+Core: Elementwise Add                                   32.1791 ms
+Core: Elementwise Mul                                   31.2166 ms
+Core: Array Sorting (sort)                              408.1717 ms
+LinearAlgebra (Dense): Matrix Mul (*)                   49.9109 ms
+LinearAlgebra (Dense): Matrix Inv                       91.8343 ms
+LinearAlgebra (Dense): Linear Solve (\)                 24.9197 ms
+LinearAlgebra (Dense): SVD                              610.3538 ms
+LinearAlgebra (Dense): LU                               23.4209 ms
+LinearAlgebra (Dense): QR                               57.2593 ms
+FFTW: FFT                                               530.4211 ms
+QuadGK: Numerical Integration (quadgk)                  12.3456 ms
+Optim: Function Optimization (BFGS)                     84.0241 ms
+DSP: Signal Filtering (filt)                            430.6811 ms
+Interpolations: Cubic Interpolation                     13.2694 ms
+DifferentialEquations: Lorenz System (Tsit5/RK45)       93.9220 ms
+Statistics: Linear Regression (OLS, \)                  45.2948 ms
+Sparse (SPD Laplacian): SpMV (A*x)                      0.7196 ms
+Sparse (SPD Laplacian): Direct Solve (\)                33.8520 ms
+Sparse (SPD Laplacian): Cholesky Factorization          30.5342 ms
+Sparse (sprand): SpMV (A*x)                             11.7732 ms
 ```
